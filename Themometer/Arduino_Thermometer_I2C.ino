@@ -2,8 +2,7 @@
 #include <Wire.h>
 LiquidCrystal_I2C lcd(0x27,16,2);
 
-void setup() 
-{
+void setup() {
   lcd.init();
   lcd.backlight();
   lcd.setCursor(4,0);
@@ -11,9 +10,9 @@ void setup()
   lcd.setCursor(2,1);
   lcd.print("THERMOMETER");
   delay(1000);
-  byte degree_symbol[8] = 
+  byte degree_symbol[8] =
   {
-    0b00111,             
+    0b00111,
     0b00101,
     0b00111,
     0b00000,
@@ -24,8 +23,7 @@ void setup()
   };
   lcd.createChar(1, degree_symbol);
 }
-void loop() 
-{
+void loop() {
   lcd.clear();
   float val=analogRead(A0);
   float temp=val*(5.0/1023.0)*85;

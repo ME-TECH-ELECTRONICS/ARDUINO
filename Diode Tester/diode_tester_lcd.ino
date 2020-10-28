@@ -3,10 +3,9 @@ LiquidCrystal lcd(2,3,4,5,6,7);
 
 int B=13;
 float D,Di=0;
-void setup() 
-{
+void setup() {
   lcd.begin(16,2);
-  pinMode(B,OUTPUT); 
+  pinMode(B,OUTPUT);
   lcd.clear();
   lcd.setCursor(5,0);
   lcd.print("ME TECH");
@@ -14,13 +13,10 @@ void setup()
   lcd.print("D/C TESTER");
   delay(2000);
 }
-void loop() 
-{
- 
+void loop() {
  D=analogRead(A0);
  Di = D* (5.0/1023.0);
- if(Di>0.02)
- {
+ if(Di>0.02){
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("Diode");
@@ -29,8 +25,7 @@ void loop()
   lcd.print("V");
   delay(200);
  }
- else
- {
+ else {
   byte buzzer [8]=
   {
    0b00001,
@@ -62,14 +57,12 @@ void loop()
   lcd.print("Yes");
   lcd.write(byte(1));
   lcd.write(byte(2));
-  if(D<0.02)
-  {
+  if(D<0.02) {
    digitalWrite(B,HIGH);
    delay(500);
    digitalWrite(B,LOW);
   }
-  else
-  {
+  else {
    digitalWrite(B,LOW);
   }
  }

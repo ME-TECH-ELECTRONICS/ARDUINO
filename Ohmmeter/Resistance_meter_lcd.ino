@@ -18,8 +18,7 @@ int Res_22k_value =22009;      //22K resistor actual value
 int Res_560k_value =560.89;   //560K resistor actual value
 int Res_1M_value=988.20;     //1M resistor actual value
 
-void setup() 
-{
+void setup() {
  pinMode(button,INPUT);
  delay(100);
  lcd.clear();
@@ -28,22 +27,18 @@ void setup()
  lcd.print("ARDUINO");
  lcd.setCursor(0,1);
  lcd.print("RESISTANCE METER");
- delay(2000); 
- 
+ delay(2000);
+
 }
-void loop() 
-{
- if(!digitalRead(button) && but_state)
-  {
+void loop() {
+ if(!digitalRead(button) && but_state) {
     res_scale = res_scale + 1;
     but_state = false;
-    if(res_scale > 3)
-    {
+    if(res_scale > 3) {
       res_scale=0;
     }
    }
- if(digitalRead(button) && !but_state)
-  {
+ if(digitalRead(button) && !but_state) {
     but_state = true;
   }
  byte ohm [8]=
@@ -59,17 +54,15 @@ void loop()
   };
   lcd.createChar(0,ohm);
   R2=analogRead(analog);
-  R1=(R2*5)/1024; 
-  if(res_scale == 0)
- {  
+  R1=(R2*5)/1024;
+  if(res_scale == 0) {
   pinMode(res_2_2k,OUTPUT);
   pinMode(res_22k,INPUT);
   pinMode(res_560k,INPUT);
   pinMode(res_1M,INPUT);
   digitalWrite(res_2_2k,LOW);
   R=Res_2_2k_value*((5/R1)-1);
-  if(R<1000)
-  {
+  if(R<1000) {
    lcd.clear();
    lcd.setCursor(0,0);
    lcd.print("OHMMETER");
@@ -86,8 +79,7 @@ void loop()
    lcd.write(byte(0));
    delay(500);
   }
-  else if(R<2200)
-  {
+  else if(R<2200) {
    lcd.clear();
    lcd.setCursor(0,0);
    lcd.print("OHMMETER");
@@ -105,8 +97,7 @@ void loop()
    lcd.write(byte(0));
    delay(500);
   }
-  else
-  {
+  else {
    lcd.clear();
    lcd.setCursor(0,0);
    lcd.print("OHMMETER");
@@ -123,17 +114,15 @@ void loop()
    delay(500);
   }
  }
- if(res_scale == 1)
- {
+ if(res_scale == 1) {
   pinMode(res_2_2k,INPUT);
   pinMode(res_22k,OUTPUT);
   pinMode(res_560k,INPUT);
   pinMode(res_1M,INPUT);
   digitalWrite(res_22k,LOW);
   R=Res_22k_value*((5/R1)-1);
-  
-  if(R<22000)
-  {
+
+  if(R<22000) {
    lcd.clear();
    lcd.setCursor(0,0);
    lcd.print("OHMMETER");
@@ -151,8 +140,7 @@ void loop()
    lcd.write(byte(0));
    delay(500);
   }
-  else
-  {
+  else {
    lcd.clear();
    lcd.setCursor(0,0);
    lcd.print("OHMMETER");
@@ -169,16 +157,14 @@ void loop()
    delay(500);
   }
  }
- if(res_scale == 2)
- {
+ if(res_scale == 2) {
   pinMode(res_2_2k,INPUT);
   pinMode(res_22k,INPUT);
   pinMode(res_560k,OUTPUT);
   pinMode(res_1M,INPUT);
   digitalWrite(res_560k,LOW);
   R=Res_560k_value*((5/R1)-1);
-  if(R<560)
-  {
+  if(R<560) {
    lcd.clear();
    lcd.setCursor(0,0);
    lcd.print("OHMMETER");
@@ -196,8 +182,7 @@ void loop()
    lcd.write(byte(0));
    delay(500);
   }
-  else
-  {
+  else {
    lcd.clear();
    lcd.setCursor(0,0);
    lcd.print("OHMMETER");
@@ -214,17 +199,15 @@ void loop()
    delay(500);
   }
  }
- if(res_scale == 3)
- {
+ if(res_scale == 3) {
   pinMode(res_2_2k,INPUT);
   pinMode(res_22k,INPUT);
   pinMode(res_560k,INPUT);
   pinMode(res_1M,OUTPUT);
   digitalWrite(res_1M,LOW);
   R=Res_1M_value*((5/R1)-1);
-  
- if(R<1000)
-  {
+
+ if(R<1000) {
    lcd.clear();
    lcd.setCursor(0,0);
    lcd.print("OHMMETER");
@@ -242,8 +225,7 @@ void loop()
    lcd.write(byte(0));
    delay(500);
   }
- else
- {
+ else {
   lcd.clear();
    lcd.setCursor(0,0);
    lcd.print("OHMMETER");
@@ -259,5 +241,5 @@ void loop()
    lcd.print(">1M");
    delay(500);
  }
- } 
+ }
 }

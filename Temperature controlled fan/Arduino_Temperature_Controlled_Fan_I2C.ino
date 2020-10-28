@@ -6,8 +6,7 @@ int Fan=9;
 bool Plus_state=true;
 bool Minus_state=true;
 int Count=25;
-void setup() 
-{
+void setup() {
   lcd.init();
   lcd.backlight();
   lcd.setCursor(4,0);
@@ -18,9 +17,9 @@ void setup()
   pinMode(Plus_but,INPUT_PULLUP);
   pinMode(Minus_but,INPUT_PULLUP);
   pinMode(Fan,OUTPUT);
-  byte degree_symbol[8] = 
+  byte degree_symbol[8] =
   {
-    0b00111,             
+    0b00111,
     0b00101,
     0b00111,
     0b00000,
@@ -31,8 +30,7 @@ void setup()
   };
   lcd.createChar(1,degree_symbol);
 }
-void loop() 
-{
+void loop() {
   lcd.clear();
   float val=analogRead(A0);
   float temp=val*(5.0/1023.0)*85;
@@ -41,22 +39,19 @@ void loop()
   lcd.print(temp);
   lcd.write(1);
   lcd.print("C");
-  if(!digitalRead(Plus_but)&&Plus_state)
-  {
+  if(!digitalRead(Plus_but)&&Plus_state) {
     Count++;
     lcd.setCursor(9,0);
     lcd.print("|S=");
     lcd.print(Count);
   }
-  else if(!digitalRead(Minus_but)&&Minus_state)
-  {
+  else if(!digitalRead(Minus_but)&&Minus_state) {
     Count--;
     lcd.setCursor(9,0);
     lcd.print("|S=");
     lcd.print(Count);
   }
-  if(temp>=Count)
-  {
+  if(temp>=Count) {
     lcd.setCursor(9,0);
     lcd.print("|S=");
     lcd.print(Count);
@@ -64,8 +59,7 @@ void loop()
     lcd.setCursor(0,1);
     lcd.print("FAN STATUS : ON");
   }
-  else
-  {
+  else {
     lcd.setCursor(9,0);
     lcd.print("|S=");
     lcd.print(Count);
