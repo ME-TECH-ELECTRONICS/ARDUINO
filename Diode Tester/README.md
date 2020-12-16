@@ -1,4 +1,4 @@
-/* AUTHOR : ME TECH */
-/* DATE :22-08-2020 */
-/*======================================================*/
-/* arduino program for testing diode and continuity */
+AUTHOR : ME TECH
+DATE : 22-08-2020
+======================================================
+Arduino program for testing diode and continuity
