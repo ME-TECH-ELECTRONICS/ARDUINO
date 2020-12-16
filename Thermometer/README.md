@@ -1,4 +1,4 @@
 /* AUTHOR : ME TECH */
 /* DATE :22-08-2020 */
 /*======================================================*/
-/* arduino program for testing diode and continuity */
+This folder contains files for creating thermometer using arduino
